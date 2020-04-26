@@ -15,202 +15,209 @@
   background: rgba(255, 255, 255, 0.699);
 }
 
-body {
-  font-family: "Roboto", sans-serif;
+body{
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 }
-
-h1, h2, h3, h4, h5, h6, p, a {
-  font-family: "Poppins", sans-serif;
+h1,h2,h3,h4,h5,h6,p,a{
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
-
 /*--------- properties sass---------*/
-.item__details a, .item__details:hover, .item__details, .cat-list, .principal, .header {
+$transitionTime: 450ms;
+
+@mixin transition($time, $property, $direction){
+  transition: $time $property;
+
+  @if $property == transform {
+    transform-origin: center $direction;
+  }
+}
+
+%text-color{
   color: white;
 }
 
-/* ---------------- header ------ */
-.header {
-  /* outline: 1px solid red; */
-  background-color: black;
+@mixin center($property) {
+  display: flex;
+  align-items: center;
+  justify-content: $property;
 }
 
-.header__container {
+/* ---------------- header ------ */
+.header{
+  /* outline: 1px solid red; */
+  background-color: black;
+  @extend %text-color;
+}
+.header__container{
   width: 100%;
   height: 70px;
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  @include center(flex-start);
 }
-
-.header__container--logo {
+.header__container--logo{
   margin: 0 20px;
   height: 70%;
 }
-
-.header__container--title {
+.header__container--title{
   font-size: 24px;
 }
-
 /* --------------Fin header ------ */
 /* --------------Principal ------ */
-.principal {
+.principal{
   background-color: black;
+  @extend %text-color;
   max-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center(center);
 }
-
-.principal__image-container {
+.principal__image-container{
   width: 900px;
   max-height: 600px;
   clip-path: polygon(80% 0, 100% 50%, 80% 100%, 0 100%, 8% 50%, 0 0);
 }
-
-.principal__image {
+.principal__image{
   margin-right: -100px;
   width: 500px;
   max-height: 600px;
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
   object-fit: cover;
-  transition: 450ms transform;
-  transform-origin: center right;
-}
-.principal__image:hover {
-  transform: translate3d(30px, 0, 0);
+  @include transition($transitionTime, transform, right);
+
+  &:hover{
+    transform: translate3d(30px, 0, 0);
+  }
 }
 
-.principal__description {
+.principal__description{
   padding: 50px 30px;
   max-width: 400px;
 }
-
 /* --------------Fin Principal ------ */
 /* -------------- Cat-list ------ */
-.cat-list {
+.cat-list{
   width: 100%;
   height: 800px;
-  background-image: url("../images/cat-black-background.jpg");
+  @extend %text-color;
+  background-image: url('../images/cat-black-background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-
-.cat-list__title {
+.cat-list__title{
   padding: 50px;
   font-size: 18px;
 }
-
-.cat-list__container {
+.cat-list__container{
   width: 100%;
   height: 673px;
-  background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+  @include center(center);
   margin: auto;
 }
-
-.cat-list__details {
+.cat-list__details{
   width: 400px;
   margin: 50px;
 }
-
-.cat-list__items {
+.cat-list__items{
   width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center(center);
   overflow: scroll;
   position: relative;
 }
-
-.cat-list__item__container {
+.cat-list__item__container{
   box-sizing: content-box;
   width: 100%;
   height: 350px;
   margin-right: 30px;
   white-space: nowrap;
-}
-.cat-list__item__container:hover .cat-list__item {
-  opacity: 0.5;
-}
-.cat-list__item__container:hover .cat-list__item:hover {
-  opacity: 1;
-}
 
-.cat-list__item {
+  &:hover{
+    .cat-list__item{
+      opacity: 0.5;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+
+  }
+
+}
+.cat-list__item{
   width: 200px;
   height: 300px;
   border-radius: 20px;
   overflow: hidden;
   margin-right: -110px;
   display: inline-block;
-  transition: 450ms transform;
-  transform-origin: center left;
+  @include transition($transitionTime,transform,left);
   position: relative;
-}
-.cat-list__item:hover ~ .cat-list__item {
-  transform: translate3d(110px, 20px, 0);
+
+  &:hover{
+    ~.cat-list__item{
+      transform: translate3d(110px, 20px, 0);
+    }
+  }
+
 }
 
-.item__image {
+.item__image{
   width: 200px;
   height: 300px;
   object-fit: cover;
 }
 
-.item__details {
+.item__details{
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  @extend %text-color;
   font-size: 10px;
   opacity: 0;
-  transition: 450ms opacity;
+  @include transition($transitionTime,opacity,left);
   padding: 225px 10px 10px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-}
-.item__details:hover {
-  opacity: 1;
-}
-.item__details p {
-  font-size: 20px;
-  margin: 5px 0;
-}
-.item__details a {
-  font-size: 12px;
-  text-decoration: none;
-  cursor: pointer;
-}
-.item__details a:hover {
-  text-decoration: underline;
+
+  &:hover{
+    opacity: 1;
+    @extend %text-color;
+  }
+
+  p{
+    font-size: 20px;
+    margin: 5px 0;
+  }
+
+  a{
+    font-size: 12px;
+    @extend %text-color;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
 
 /* -------------- Fin Cat-list ------ */
 /* -------------- Footer ------ */
-.footer {
+.footer{
   /* outline: 1px solid red; */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  @include center(flex-end);
   width: 100%;
   height: 150px;
-  background: #ff0076;
-  background: linear-gradient(360deg, #ff0076 0%, #340018 50%, black 100%);
+  background: rgb(255,0,118);
+  background: linear-gradient(360deg, rgba(255,0,118,1) 0%, rgba(52,0,24,1) 50%, rgba(0,0,0,1) 100%);
 }
-
-.footer__image {
+.footer__image{
   width: 115px;
   margin-right: 30px;
 }
 
 /* -------------- fin Footer ------ */
-
-/*# sourceMappingURL=catStyle.css.map */
