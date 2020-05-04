@@ -19,6 +19,7 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
@@ -35,14 +36,19 @@ h1, h2, h3, h4, h5, h6, p, a {
 /* ---------------- header ------ */
 .header {
   /* outline: 1px solid red; */
+  width: 1900px;
+  height: 70px;
+  max-width: 1900px;
+  max-height: 70px;
+  margin: 0 auto;
   background-color: black;
 }
 
 .header__container {
-  width: 100%;
-  height: 70px;
-  max-width: 100%;
-  max-height: 70px;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
   margin: 0;
   display: flex;
   align-items: center;
@@ -65,10 +71,11 @@ h1, h2, h3, h4, h5, h6, p, a {
 /* --------------Principal ------ */
 .principal {
   background-color: black;
-  width: auto;
+  width: 100%;
   height: 600px;
-  max-width: auto;
+  max-width: 100%;
   max-height: 600px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,10 +115,11 @@ h1, h2, h3, h4, h5, h6, p, a {
 /* --------------Fin Principal ------ */
 /* -------------- Cat-list ------ */
 .cat-list {
-  width: 100%;
+  width: 1900px;
   height: 800px;
-  max-width: 100%;
+  max-width: 1900px;
   max-height: 800px;
+  margin: 0 auto;
   background-image: url("../images/cat-black-background.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -227,7 +235,6 @@ h1, h2, h3, h4, h5, h6, p, a {
 /* -------------- Fin Cat-list ------ */
 /* -------------- Footer ------ */
 .footer {
-  /* outline: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: flex-end;

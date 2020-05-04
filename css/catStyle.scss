@@ -19,6 +19,7 @@ body{
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 h1,h2,h3,h4,h5,h6,p,a{
   font-family: 'Poppins', sans-serif;
@@ -26,6 +27,7 @@ h1,h2,h3,h4,h5,h6,p,a{
   padding: 0;
 }
 /*--------- properties sass---------*/
+$max-width: 1900px;
 $transitionTime: 450ms;
 
 @mixin transition($time, $property, $direction){
@@ -56,11 +58,13 @@ $transitionTime: 450ms;
 /* ---------------- header ------ */
 .header{
   /* outline: 1px solid red; */
+  @include volumn($max-width, 70px);
+  margin: 0 auto;
   background-color: black;
   @extend %text-color;
 }
 .header__container{
-  @include volumn(100%, 70px);
+  @include volumn(inherit, inherit);
   margin: 0;
   @include center(flex-start);
 }
@@ -76,7 +80,8 @@ $transitionTime: 450ms;
 .principal{
   background-color: black;
   @extend %text-color;
-  @include volumn(auto,600px);
+  @include volumn(100%,600px);
+  margin: 0 auto;
   @include center(center);
 }
 .principal__image-container{
@@ -102,7 +107,8 @@ $transitionTime: 450ms;
 /* --------------Fin Principal ------ */
 /* -------------- Cat-list ------ */
 .cat-list{
-  @include volumn(100%,800px);
+  @include volumn($max-width,800px);
+  margin: 0 auto;
   @extend %text-color;
   background-image: url('../images/cat-black-background.png');
   background-repeat: no-repeat;
@@ -207,7 +213,6 @@ $transitionTime: 450ms;
 /* -------------- Fin Cat-list ------ */
 /* -------------- Footer ------ */
 .footer{
-  /* outline: 1px solid red; */
   @include center(flex-end);
   @include volumn(100%,150px);
   background: rgb(255,0,118);
