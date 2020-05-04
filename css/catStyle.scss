@@ -36,6 +36,13 @@ $transitionTime: 450ms;
   }
 }
 
+@mixin volumn($width, $height){
+  width: $width;
+  height: $height;
+  max-width: $width;
+  max-height: $height;
+}
+
 %text-color{
   color: white;
 }
@@ -53,14 +60,13 @@ $transitionTime: 450ms;
   @extend %text-color;
 }
 .header__container{
-  width: 100%;
-  height: 70px;
+  @include volumn(100%, 70px);
   margin: 0;
   @include center(flex-start);
 }
 .header__container--logo{
   margin: 0 20px;
-  height: 70%;
+  @include volumn(auto,70%);
 }
 .header__container--title{
   font-size: 24px;
@@ -70,18 +76,16 @@ $transitionTime: 450ms;
 .principal{
   background-color: black;
   @extend %text-color;
-  max-height: 600px;
+  @include volumn(auto,600px);
   @include center(center);
 }
 .principal__image-container{
-  width: 900px;
-  max-height: 600px;
+  @include volumn(900px,inherit);
   clip-path: polygon(80% 0, 100% 50%, 80% 100%, 0 100%, 8% 50%, 0 0);
 }
 .principal__image{
   margin-right: -100px;
-  width: 500px;
-  max-height: 600px;
+  @include volumn(500px,inherit);
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
   object-fit: cover;
   @include transition($transitionTime, transform, right);
@@ -93,15 +97,14 @@ $transitionTime: 450ms;
 
 .principal__description{
   padding: 50px 30px;
-  max-width: 400px;
+  @include volumn(400px,auto);
 }
 /* --------------Fin Principal ------ */
 /* -------------- Cat-list ------ */
 .cat-list{
-  width: 100%;
-  height: 800px;
+  @include volumn(100%,800px);
   @extend %text-color;
-  background-image: url('../images/cat-black-background.jpg');
+  background-image: url('../images/cat-black-background.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -111,26 +114,24 @@ $transitionTime: 450ms;
   font-size: 18px;
 }
 .cat-list__container{
-  width: 100%;
-  height: 673px;
+  @include volumn(100%,673px);
   background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
   @include center(center);
   margin: auto;
 }
 .cat-list__details{
-  width: 400px;
+  @include volumn(400px,auto);
   margin: 50px;
 }
 .cat-list__items{
-  width: 900px;
+  @include volumn(900px,auto);
   @include center(center);
   overflow: scroll;
   position: relative;
 }
 .cat-list__item__container{
   box-sizing: content-box;
-  width: 100%;
-  height: 350px;
+  @include volumn(100%,350px);
   margin-right: 30px;
   white-space: nowrap;
 
@@ -147,8 +148,7 @@ $transitionTime: 450ms;
 
 }
 .cat-list__item{
-  width: 200px;
-  height: 300px;
+  @include volumn(200px,300px);
   border-radius: 20px;
   overflow: hidden;
   margin-right: -110px;
@@ -165,8 +165,7 @@ $transitionTime: 450ms;
 }
 
 .item__image{
-  width: 200px;
-  height: 300px;
+  @include volumn(inherit,inherit);
   object-fit: cover;
 }
 
@@ -210,13 +209,12 @@ $transitionTime: 450ms;
 .footer{
   /* outline: 1px solid red; */
   @include center(flex-end);
-  width: 100%;
-  height: 150px;
+  @include volumn(100%,150px);
   background: rgb(255,0,118);
   background: linear-gradient(360deg, rgba(255,0,118,1) 0%, rgba(52,0,24,1) 50%, rgba(0,0,0,1) 100%);
 }
 .footer__image{
-  width: 115px;
+  @include volumn(115px,auto);
   margin-right: 30px;
 }
 
