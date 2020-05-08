@@ -122,7 +122,8 @@ $transitionTime: 450ms;
 .cat-list__container{
   @include volumn(100%,673px);
   background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
-  @include center(center);
+  display: flex;
+  align-items: center;
   margin: auto;
 }
 .cat-list__details{

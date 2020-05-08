@@ -139,7 +139,6 @@ h1, h2, h3, h4, h5, h6, p, a {
   background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: auto;
 }
 
